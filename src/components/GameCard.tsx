@@ -45,10 +45,7 @@ const GameCard = ({ gameItem }: GameCardProps) => {
               })}
             </Stack>
             <Spacer />
-            <CustomBadge
-              color="green"
-              text={metacritic.toString()}
-            ></CustomBadge>
+            <CustomBadge color="green" text={metacritic}></CustomBadge>
           </Flex>
         </CardBody>
       </Card>
