@@ -5,17 +5,19 @@ import {
   Heading,
   Stack,
   Flex,
-  Badge,
   Spacer,
 } from "@chakra-ui/react";
 import { Game } from "../hooks/useGame";
 import CustomIcons from "./CustomIcons";
+import CustomBadge from "./CustomBadge";
+import getCroppedImageUrl from "../services/image-url";
 
 interface GameCardProps {
   gameItem: Game;
 }
 const GameCard = ({ gameItem }: GameCardProps) => {
   const { background_image, name, parent_platforms, metacritic } = gameItem;
+  const croppedImgUrl = getCroppedImageUrl(background_image, 600, 400);
   return (
     <>
       <Card maxW="sm">
@@ -24,7 +26,7 @@ const GameCard = ({ gameItem }: GameCardProps) => {
             boxSize="200px"
             width={"100%"}
             objectFit="cover"
-            src={background_image}
+            src={croppedImgUrl}
             alt={name}
             borderRadius="lg"
           />
@@ -43,7 +45,10 @@ const GameCard = ({ gameItem }: GameCardProps) => {
               })}
             </Stack>
             <Spacer />
-            <Badge colorScheme="green">{metacritic}</Badge>
+            <CustomBadge
+              color="green"
+              text={metacritic.toString()}
+            ></CustomBadge>
           </Flex>
         </CardBody>
       </Card>

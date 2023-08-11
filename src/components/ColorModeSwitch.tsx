@@ -12,7 +12,12 @@ const ColorModeSwitch = () => {
   return (
     <Box w="180px">
       <FormControl display="flex" alignItems="center">
-        <Switch id="dark-mode" mr="2" onChange={toggleColorMode}></Switch>
+        <Switch
+          isChecked={colorMode === "dark"}
+          id="dark-mode"
+          mr="2"
+          onChange={toggleColorMode}
+        ></Switch>
         <FormLabel htmlFor="dark-mode" mb="0">
           Toggle {colorMode === "light" ? "Dark" : "Light"}
         </FormLabel>
