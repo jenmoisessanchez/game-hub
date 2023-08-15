@@ -7,11 +7,13 @@ import { Genre } from "./hooks/useGameGenres";
 import PlatformList from "./components/PlatformList";
 import { Platform } from "./hooks/useGamePlatform";
 import SortSelector from "./components/SortSelector";
+import CustomContext from "./components/CustomContext";
 
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchInput: string;
 }
 const App = () => {
   // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
@@ -32,7 +34,9 @@ const App = () => {
       }}
     >
       <GridItem area="nav">
-        <NavBar />
+        <CustomContext.Provider value={{ gameQuery, setGameQuery }}>
+          <NavBar />
+        </CustomContext.Provider>
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" ml="20px" mt="20px">
