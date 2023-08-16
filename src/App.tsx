@@ -1,4 +1,12 @@
-import { Grid, GridItem, HStack, Show, useStatStyles } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  GridItem,
+  HStack,
+  Heading,
+  Show,
+  useStatStyles,
+} from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -15,6 +23,12 @@ export interface GameQuery {
   sortOrder: string;
   searchInput: string;
 }
+/**
+ * NEXT
+ * Add dynamic game heading
+ * add genere heading
+ *
+ */
 const App = () => {
   // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   // const [selectedPlatform, setselectedPlatform] = useState<Platform | null>(
@@ -47,6 +61,11 @@ const App = () => {
         </GridItem>
       </Show>
       <GridItem area="main" mt="20px">
+        <Heading as="h1" mb="3">
+          {`${gameQuery.platform?.name ?? ""} ${
+            gameQuery.genre?.name ?? ""
+          } Games`}
+        </Heading>
         <HStack spacing="10px">
           <PlatformList
             onSeletecPlatform={(platform) =>

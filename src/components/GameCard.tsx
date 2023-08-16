@@ -11,6 +11,7 @@ import { Game } from "../hooks/useGame";
 import CustomIcons from "./CustomIcons";
 import CustomBadge from "./CustomBadge";
 import getCroppedImageUrl from "../services/image-url";
+import { Platform } from "../hooks/useGamePlatform";
 
 interface GameCardProps {
   gameItem: Game;
@@ -18,6 +19,7 @@ interface GameCardProps {
 const GameCard = ({ gameItem }: GameCardProps) => {
   const { background_image, name, parent_platforms, metacritic } = gameItem;
   const croppedImgUrl = getCroppedImageUrl(background_image, 600, 400);
+
   return (
     <>
       <Card maxW="sm">
@@ -30,11 +32,8 @@ const GameCard = ({ gameItem }: GameCardProps) => {
             alt={name}
             borderRadius="lg"
           />
-          <Stack mt="6" spacing="3">
-            <Heading size="md">{name}</Heading>
-          </Stack>
-          <Flex alignItems="center">
-            <Stack spacing={2} direction="row" mt="3">
+          <Flex alignItems="center" mt="6">
+            <Stack spacing={2} direction="row">
               {parent_platforms.map(({ platform }) => {
                 return (
                   <CustomIcons
@@ -47,6 +46,9 @@ const GameCard = ({ gameItem }: GameCardProps) => {
             <Spacer />
             <CustomBadge color="green" text={metacritic}></CustomBadge>
           </Flex>
+          <Stack mt="3" spacing="3">
+            <Heading size="md">{name}</Heading>
+          </Stack>
         </CardBody>
       </Card>
     </>

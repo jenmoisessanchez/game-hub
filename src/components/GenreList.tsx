@@ -1,4 +1,4 @@
-import { Flex, Image, Spinner, Button } from "@chakra-ui/react";
+import { Flex, Image, Spinner, Button, Heading } from "@chakra-ui/react";
 import useGameGenres, { Genre } from "../hooks/useGameGenres";
 import getCroppedImageUrl from "../services/image-url";
 
@@ -14,6 +14,9 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   }
   return (
     <>
+      <Heading size="lg" mb="3">
+        Genres
+      </Heading>
       {data.map((genre) => {
         const croppedImgUrl = getCroppedImageUrl(
           genre.image_background,
