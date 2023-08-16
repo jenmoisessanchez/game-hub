@@ -11,7 +11,6 @@ import { Game } from "../hooks/useGame";
 import CustomIcons from "./CustomIcons";
 import CustomBadge from "./CustomBadge";
 import getCroppedImageUrl from "../services/image-url";
-import { Platform } from "../hooks/useGamePlatform";
 
 interface GameCardProps {
   gameItem: Game;
